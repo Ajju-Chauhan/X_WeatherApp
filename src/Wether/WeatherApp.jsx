@@ -1,22 +1,20 @@
-
-
 import { useState, useEffect } from "react";
-import "../App.css";  // Ensure you have the appropriate CSS classes defined in this file
+import "../App.css";
 
 function WeatherApp() {
   const [city, setCity] = useState("");
   const [temp, setTemp] = useState("");
   const [cityData, setCityData] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (city) {
       const fetchCity = async () => {
         setLoading(true);
-        setError(null);
+        setError("");
         try {
-          const url = `https://api.weatherapi.com/v1/current.json?key=7cc88f5358ef4d0ca6760308241005&q=${city}&aqi=no`;
+          const url = `https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=${city}&aqi=no`;
           const response = await fetch(url);
           if (response.ok) {
             const data = await response.json();
@@ -24,10 +22,12 @@ function WeatherApp() {
           } else {
             setCityData(null);
             setError("Failed to fetch weather data");
+            alert("Failed to fetch weather data");
           }
         } catch (error) {
           setCityData(null);
           setError("Failed to fetch weather data");
+          alert("Failed to fetch weather data");
         } finally {
           setLoading(false);
         }
@@ -53,11 +53,10 @@ function WeatherApp() {
         />
         <button type="submit" className="btn">Search</button>
       </form>
-  
-      {loading && <p>Loading data…</p>}
-      {error && <p>{error}</p>}
-  
-      {cityData && !loading && !error && (
+
+      {loading ? (
+        <p>Loading data…</p>
+      ) : cityData ? (
         <div className="weather-cards">
           <div className="weather-card">
             <p>Temperature</p>
@@ -76,10 +75,11 @@ function WeatherApp() {
             <p>{cityData.current.wind_kph} kph</p>
           </div>
         </div>
+      ) : (
+        error && <p>{error}</p>
       )}
     </>
   );
-  
 }
 
 export default WeatherApp;
