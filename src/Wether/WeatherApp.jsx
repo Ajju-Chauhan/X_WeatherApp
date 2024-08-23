@@ -54,8 +54,11 @@ function WeatherApp() {
         <button type="submit" className="btn">Search</button>
       </form>
 
-      {loading ? <p>Loading data…</p>:
+      {loading && <p>Loading data…</p>}
       
+      {error && <p>{error}</p>}
+      
+      {cityData && !loading && !error && (
         <div className="weather-cards">
           <div className="weather-card">
             <p>Temperature</p>
@@ -74,10 +77,7 @@ function WeatherApp() {
             <p>{cityData.current.wind_kph} kph</p>
           </div>
         </div>
-      
-      }
-      {error && <p>{error}</p>}
-      
+      )}
     </>
   );
 }
