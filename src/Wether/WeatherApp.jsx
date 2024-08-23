@@ -18,15 +18,12 @@ function WeatherApp() {
           const response = await fetch(url);
           if (response.ok) {
             const data = await response.json();
-            console.log("Data >", data.location.name);
             setCityData(data);
           } else {
-            console.log("City not found");
             setCityData(null);
             setError("City not found. Please try again.");
           }
         } catch (error) {
-          console.error("Error fetching data:", error);
           setCityData(null);
           setError("Error fetching data. Please try again later.");
         } finally {
