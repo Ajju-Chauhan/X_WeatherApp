@@ -18,12 +18,13 @@
   border-style: none;
 }
 
-.Outerdiv {
+.weather-cards {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
-.InnerDiv {
+.weather-card {
   border: 1px solid black;
   border-radius: 6px;
   margin: 5px;
