@@ -38,7 +38,9 @@ function WeatherApp() {
 
   const handleInput = (event) => {
     event.preventDefault();
-    setCity(temp);
+    if (temp.trim()) {
+      setCity(temp);
+    }
   };
 
   return (
