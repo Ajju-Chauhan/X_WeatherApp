@@ -11,9 +11,9 @@ function WeatherApp() {
   useEffect(() => {
     if (city) {
       const fetchCity = async () => {
-        setLoading(true);
+        setLoading(true); // Set loading to true when the fetch starts
         setError("");
-        setCityData(null);
+        setCityData(null); // Reset city data before fetching new data
         try {
           const url = `https://api.weatherapi.com/v1/current.json?key=7cc88f5358ef4d0ca6760308241005&q=${city}&aqi=no`;
           const response = await fetch(url);
@@ -27,7 +27,7 @@ function WeatherApp() {
           setError("Failed to fetch weather data");
           alert("Failed to fetch weather data");
         } finally {
-          setLoading(false);
+          setLoading(false); // Set loading to false after the fetch completes
         }
       };
       fetchCity();
@@ -54,11 +54,9 @@ function WeatherApp() {
         <button type="submit" className="btn">Search</button>
       </form>
 
-      {loading && <p>Loading data…</p>}
-      
-      {error && <p>{error}</p>}
-      
-      {cityData && !loading && !error && (
+      {loading ? ( // Display loading message when loading is true
+        <p>Loading data…</p>
+      ) : cityData ? (
         <div className="weather-cards">
           <div className="weather-card">
             <p>Temperature</p>
@@ -77,6 +75,8 @@ function WeatherApp() {
             <p>{cityData.current.wind_kph} kph</p>
           </div>
         </div>
+      ) : (
+        error && <p>{error}</p>
       )}
     </>
   );
