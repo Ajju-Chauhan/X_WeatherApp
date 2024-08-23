@@ -1,38 +1,43 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form{
+  margin-top: 20px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.btn{
+  background-color:rgb(75, 148, 75);
+  border-style: nonne;
+  border-radius: 6px;
+  padding: 10px;
   color: white;
+  margin-left: 5px;
+}
+.inp{
+  border-radius: 6px;
+  border-style: none;
+  
+}
+.Outerdiv{
+  
+  display: flex;
+  justify-content: space-around;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.InnerDiv {
+  border: 1px solid black;
+  border-radius: 6px;
+  width: 100%;
+  margin-top: 50px;                 /* Adds a 50px margin at the top */
+  margin-left: 5px;                 /* Adds a 5px margin to the left */
+  margin-right: 5px;                /* Adds a 5px margin to the right */
+  margin-bottom: 5px;               /* Adds a 5px margin to the bottom */
+  display: flex;                    /* Sets up the element as a flex container */
+  flex-direction: row;              /* Aligns child elements (the <p> tags) in a row */
+  justify-content: space-between;   /* Distributes space between the <p> tags evenly */
+  align-items: center;              /* Aligns the <p> tags vertically in the center */
+  padding: 5px;
+  font-size: medium;
 }

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "../App.css"
 
 function WeatherApp() {
   const [city, setCity] = useState("");
@@ -37,38 +38,40 @@ function WeatherApp() {
 
   return (
     <>
-      <form onSubmit={handleInput}>
+      <form onSubmit={handleInput} className="form">
         <input
+        className="inp"
           type="text"
           value={temp}
           onChange={(e) => setTemp(e.target.value)}
           placeholder="Enter city name"
         />
-        <button type="submit">Search</button>
+        <button type="submit" className="btn">Search</button>
       </form>
       {cityData ? (
-        <div>
-          <h2>{cityData.location.name}</h2>
-          <div>
-            <div>
+        
+        
+          <div className="Outerdiv">
+            <div className="InnerDiv">
               <p>Temperature</p>
               <p>{cityData.current.temp_c}°C</p>
             </div>
-            <div>
+            <div className="InnerDiv">
               <p>Humidity</p>
               <p>{cityData.current.humidity}%</p>
             </div>
-            <div>
+            <div className="InnerDiv">
               <p>Condition</p>
               <p>{cityData.current.condition.text}</p>
             </div>
-            <div>
+            <div className="InnerDiv">
               <p>Wind Speed</p>
+              <br />
               <p>{cityData.current.wind_kph}kph</p>
             </div>
-            <div></div>
+            
           </div>
-        </div>
+        
       ) : (
         city && <p>Loading data…</p>
       )}
