@@ -13,6 +13,7 @@ function WeatherApp() {
       const fetchCity = async () => {
         setLoading(true);
         setError("");
+        setCityData(null); // Clear previous data before fetching new data
         try {
           const url = `https://api.weatherapi.com/v1/current.json?key=7cc88f5358ef4d0ca6760308241005&q=${city}&aqi=no`;
           const response = await fetch(url);
@@ -20,12 +21,9 @@ function WeatherApp() {
             const data = await response.json();
             setCityData(data);
           } else {
-            setCityData(null);
-            setError("Failed to fetch weather data");
-            alert("Failed to fetch weather data");
+            throw new Error("Failed to fetch weather data");
           }
         } catch (error) {
-          setCityData(null);
           setError("Failed to fetch weather data");
           alert("Failed to fetch weather data");
         } finally {
@@ -39,7 +37,7 @@ function WeatherApp() {
   const handleInput = (event) => {
     event.preventDefault();
     if (temp.trim()) {
-      setCity(temp);
+      setCity(temp.trim()); // Trim whitespace from city input
     }
   };
 
@@ -56,9 +54,9 @@ function WeatherApp() {
         <button type="submit" className="btn">Search</button>
       </form>
 
-      {loading ? (
-        <p>Loading data…</p>
-      ) : cityData ? (
+      {loading && <p>Loading data…</p>}
+      {error && <p>{error}</p>}
+      {cityData && !loading && !error && (
         <div className="weather-cards">
           <div className="weather-card">
             <p>Temperature</p>
@@ -77,8 +75,6 @@ function WeatherApp() {
             <p>{cityData.current.wind_kph} kph</p>
           </div>
         </div>
-      ) : (
-        error && <p>{error}</p>
       )}
     </>
   );
