@@ -14,7 +14,7 @@ function WeatherApp() {
         setLoading(true);
         setError("");
         try {
-          const url = `https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=${city}&aqi=no`;
+          const url = `https://api.weatherapi.com/v1/current.json?key=7cc88f5358ef4d0ca6760308241005&q=${city}&aqi=no`;
           const response = await fetch(url);
           if (response.ok) {
             const data = await response.json();
