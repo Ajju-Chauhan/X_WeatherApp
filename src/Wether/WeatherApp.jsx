@@ -7,8 +7,8 @@ const Weather = () => {
   const [loading, setLoading] = useState(false);
 
   const fetchWeatherData = async () => {
-    
-    const apiUrl = `https://api.weatherapi.com/v1/current.json?key=7cc88f5358ef4d0ca6760308241005&q=${city}&aqi=no`;
+    const apiKey = '7cc88f5358ef4d0ca6760308241005'; // Replace with your actual API key
+    const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
 
     setLoading(true);
     try {
