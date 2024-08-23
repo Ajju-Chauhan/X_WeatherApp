@@ -13,7 +13,7 @@ function WeatherApp() {
       const fetchCity = async () => {
         setLoading(true);
         setError("");
-        setCityData(null); // Clear previous data before fetching new data
+        setCityData(null);
         try {
           const url = `https://api.weatherapi.com/v1/current.json?key=7cc88f5358ef4d0ca6760308241005&q=${city}&aqi=no`;
           const response = await fetch(url);
@@ -37,7 +37,7 @@ function WeatherApp() {
   const handleInput = (event) => {
     event.preventDefault();
     if (temp.trim()) {
-      setCity(temp.trim()); // Trim whitespace from city input
+      setCity(temp.trim());
     }
   };
 
