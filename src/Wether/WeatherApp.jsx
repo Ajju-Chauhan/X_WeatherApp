@@ -10,8 +10,6 @@ function WeatherApp() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const API_KEY = "YOUR_API_KEY_HERE";  // Replace with your actual API key
-
   useEffect(() => {
     if (city) {
       const fetchCity = async () => {
@@ -55,10 +53,10 @@ function WeatherApp() {
         />
         <button type="submit" className="btn">Search</button>
       </form>
-
+  
       {loading && <p>Loading data…</p>}
       {error && <p>{error}</p>}
-
+  
       {cityData && !loading && !error && (
         <div className="weather-cards">
           <div className="weather-card">
@@ -81,6 +79,7 @@ function WeatherApp() {
       )}
     </>
   );
+  
 }
 
 export default WeatherApp;
